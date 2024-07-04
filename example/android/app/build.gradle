@@ -1,3 +1,9 @@
+plugins {
+    id "com.android.application"
+    id "com.google.gms.google-services"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "kotlin-android"
+}
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -21,13 +27,10 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "26.1.10909125"
     if (project.android.hasProperty("namespace")) {
         namespace "com.dherediat97.ar_flutter_plugin_engine_example"
     }
@@ -37,12 +40,15 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.dherediat97.ar_flutter_plugin_engine_example"
-        minSdkVersion 24
-        targetSdkVersion flutter.targetSdkVersion
+        minSdk 26
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -58,6 +64,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
-
-apply plugin: 'com.google.gms.google-services'
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+}

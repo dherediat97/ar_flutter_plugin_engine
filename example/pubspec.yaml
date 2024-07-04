@@ -24,12 +24,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  # Firebase dependencies to shared and manage cloud anchor IDs and related content
-  firebase_core:
-  cloud_firestore:
-  geoflutterfire2:
-  path_provider:
-  flutter_archive:
+  # Firebase dependencies to shared and manage cloud anchor IDs and related content  
+  geoflutterfire2: ^2.3.15
+  path_provider: ^2.1.3
+  flutter_archive: ^6.0.3
 
 dev_dependencies:
   flutter_test:
